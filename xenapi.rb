@@ -96,7 +96,7 @@ module XenAPI
     end
     
     def logout
-      if @last_login_method.start_with?("slave_local")
+      if @last_login_method.to_s.start_with?("slave_local")
         self.session.local_logout
       else
         self.session.logout
