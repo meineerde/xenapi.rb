@@ -23,9 +23,9 @@ with your wife, and sell your house on eBay. So don't blame me.
     require 'xenapi'
     
     # first create a connection and login
-    session = XenAPI::Session.new("https://xen-server.example.com")
+    session = XenAPI::Session.new('https://xen-server.example.com')
     begin
-      session.login_with_password("root", "supersecret")
+      session.login_with_password('root', 'supersecret')
       
       # Now we can use the whole API directly via the session object.
       # In this example, we just list all available VMs on the server
