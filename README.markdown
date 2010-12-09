@@ -15,7 +15,7 @@ with your wife, and sell your house on eBay. So don't blame me.
 
 # Restrictions
 
-* As the rpcxml library as well as net/http of ruby do not support unix domain
+* As the xmlrpc library as well as net/http of ruby do not support unix domain
   sockets by default, this library supports only the HTTP transport currently.
 
 # Examples
