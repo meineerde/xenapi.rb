@@ -27,14 +27,14 @@ with your wife, and sell your house on eBay. So don't blame me.
     begin
       session.login_with_password("root", "supersecret")
       
-      # now we can use the whole API directly via the session object
+      # Now we can use the whole API directly via the session object.
       # In this example, we just list all available VMs on the server
       vms = session.VM.get_all
       vms.each do |vm|
         record = session.VM.get_record(vm)
         unless record['is_a_template'] || record['is_control_domain']
           name = record['name_label']
-          puts "Found VM uuid #{record['uuid']} called #{name}'
+          puts "Found VM uuid #{record['uuid']} called #{name}"
         end
       end
     ensure
