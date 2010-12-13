@@ -39,7 +39,28 @@ module XenAPI
   RETRY_COUNT = 3
   
   class SessionInvalidError < Exception; end
-  class Failure < Exception; end
+  class Failure < Exception
+    def initialize(details = [])
+      if details.is_a? Array
+        @error_type = details[0]
+        @error_details = details[1..-1] || []
+      else
+        @error_details = []
+      end
+    end
+    
+    def to_s
+      details = case @error_details.length
+        when 0 then ""
+        when 1 then @error_details[0]
+        else @error_details.inspect
+      end
+      
+      "#{@error_type.to_s}: #{details}"
+    end
+    
+    attr_reader :error_type, :error_details
+  end
 
   class Session < ::XMLRPC::Client
     def initialize(uri, proxy_host=nil, proxy_port=nil)
@@ -83,8 +104,6 @@ module XenAPI
           rescue SessionInvalidError
             raise ::XMLRPC::FaultException.new(500,
               'Received SESSION_INVALID when logging in')
-          rescue Failure => e
-            raise Failure.new()
           end
           
           @session = result
