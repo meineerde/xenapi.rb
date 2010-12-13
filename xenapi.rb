@@ -96,6 +96,7 @@ module XenAPI
     end
     
     def logout
+      # preferred method to logout the session
       if @last_login_method.start_with?("slave_local")
         self.session.local_logout
       else
@@ -104,10 +105,12 @@ module XenAPI
     end
     
     def proxy(prefix=nil, *args)
+      # Overrides base method to use our custom Proxy class
       XenAPIProxy.new(self, prefix, args, :call)
     end
 
     def proxy2(prefix=nil, *args)
+      # Overrides base method to use our custom Proxy class
       XenAPIProxy.new(self, prefix, args, :call2)
     end
     
@@ -125,6 +128,7 @@ module XenAPI
     end
     
     def _logout
+      # called from proxy object to release all session state
       @session = ""
       @last_login_method = nil
       @last_login_params = nil
