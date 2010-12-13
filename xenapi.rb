@@ -116,7 +116,7 @@ module XenAPI
     
     def logout
       # preferred method to logout the session
-      if @last_login_method.start_with?("slave_local")
+      if @last_login_method.to_s.start_with?("slave_local")
         self.session.local_logout
       else
         self.session.logout
