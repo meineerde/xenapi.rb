@@ -185,6 +185,11 @@ module XenAPI
       end
     end
     
+    # method name clash between built-in clone and the method to clone a VM
+    def clone(*args)
+      args.length > 0 ? method_missing(:clone, *args) : super
+    end
+
   private
     def server(arg)
       # returns an instance variable of the server
