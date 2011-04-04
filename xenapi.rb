@@ -94,6 +94,9 @@ module XenAPI
     end
 
     attr_reader :uri, :api_version
+    def session_id
+      @session
+    end
 
     LOGIN_METHODS = %w(login_with_password slave_local_login_with_password)
     LOGIN_METHODS.each do |method|
