@@ -7,8 +7,8 @@ This is a translation of XenAPI.py into Ruby. This script can be used to talk
 to the XMLRPC API of a Citrix XenServer.
 
 This library is in no way endorsed or supported by Citrix or XenSource and is
-provided as is. It is probably useful, but might also neuter your dog, sleep
-with your wife, and sell your house on eBay. So don't blame me.
+provided as is under the MIT License. It is probably useful, but might also
+neuter your dog or sell your house on eBay. So don't blame me.
 
 * API Documentation: http://docs.vmd.citrix.com/XenServer/5.6.0/1.0/en_gb/api/
 * Other SDK variants: http://community.citrix.com/display/xs/Download+SDKs
